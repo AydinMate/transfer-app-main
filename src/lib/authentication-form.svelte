@@ -16,7 +16,7 @@
 				Log In
 			</button></a
 		>
-		<a class="w-[49%]" href="signup">
+		<a class="w-[49%]" href="/signup">
 			<button
 				class="h3 font-bold btn {type === 'signup'
 					? 'variant-filled-primary'
