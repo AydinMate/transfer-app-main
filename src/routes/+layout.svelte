@@ -10,3 +10,4 @@
 
 <Navbar />
 <slot />
+

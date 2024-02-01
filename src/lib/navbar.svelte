@@ -33,6 +33,10 @@
 		padding: 1rem;
 	}
 
+	button {
+		border-radius: 0.25rem;
+	}
+
 	.logo {
 		display: flex;
 		align-items: center;
