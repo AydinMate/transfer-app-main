@@ -4,5 +4,5 @@
 </script>
 
 <div class="flex justify-center items-center h-[80vh]">
-    <AuthenticationForm type={"login"}/>
+    <AuthenticationForm type={"signup"}/>
 </div>
