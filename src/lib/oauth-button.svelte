@@ -21,7 +21,7 @@
 	class="flex flex-row space-x-4 justify-center items-center w-full bg-tertiary-300 hover:bg-tertiary-200 py-4"
 >
 	<img
-		class="w-6 h-auto"
+		class="w-auto h-7"
 		src={provider === 'google' ? googleIcon : appleIcon}
 		alt={`${provider === 'google' ? 'Google' : 'Apple'}-icon`}
 	/>
