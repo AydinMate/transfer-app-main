@@ -1,10 +1,28 @@
 <script lang="ts">
-	import googleIcon from '$lib/images/google-icon.png';
+	import OauthButton from './oauth-button.svelte';
+	import { supabase } from './supabase-client';
 	export let type: string;
+
+	let firstPassword: string = "";
+	let secondPassword: string = "";
+	let passwordsMatch = false;
+
+	$: passwordsMatch = firstPassword === secondPassword && firstPassword.length > 8 && /[A-Z]/.test(firstPassword) && /\d/.test(firstPassword);
+
+	let passwordInputClass = "";
+	$: {
+		if (!passwordsMatch && (firstPassword.length > 0 || secondPassword.length > 0) && type === 'signup') {
+			passwordInputClass = "border-error-500 border-2";
+		} else if (passwordsMatch) {
+			passwordInputClass = "border-success-500 border-2";
+		} else {
+			passwordInputClass = "";
+		}
+	}
 </script>
 
 <div
-	class="flex flex-col bg-tertiary-50 rounded items-center h-[35rem] px-10 w-[30rem] justify-start pt-[4rem] m-4"
+	class="flex flex-col bg-tertiary-50 rounded items-center px-10 w-[30rem] justify-start pt-[3.5rem] pb-[2rem] m-4"
 >
 	<div class="mb-4 flex w-full justify-between">
 		<a class="w-[49%]" href="/login"
@@ -27,32 +45,22 @@
 		>
 	</div>
 	<div class="flex flex-col space-y-4 w-full">
-		<input class="bg-tertiary-50" type="email" placeholder="Email Address" />
-		<input class="bg-tertiary-50" type="password" placeholder="Password" />
+		<input class="bg-tertiary-50 text-surface-900" type="email" placeholder="Email Address" />
+		<input class="bg-tertiary-50 text-surface-900 {passwordInputClass}" type="password" placeholder="Password" bind:value={firstPassword}/>
 		<div class="h-12 flex flex-col justify-center">
 			{#if type === 'login'}
 				<a href="/forgot">
 					<p class="text-primary-700 hover:text-primary-500">Forgot password?</p>
 				</a>
 			{:else}
-				<input class="bg-tertiary-50 w-full" type="password" placeholder="Repeat Password" />
+				<input class="bg-tertiary-50 w-full text-surface-900 {passwordInputClass}" type="password" placeholder="Repeat Password" bind:value={secondPassword}/>
 			{/if}
 		</div>
 		<button class="btn variant-filled-primary rounded font-bold py-4 text-lg"
 			>{type === 'login' ? 'Log In' : 'Sign Up'}</button
 		>
-
-		<a href="/">
-			<button
-				class="flex flex-row space-x-4 justify-center items-center w-full bg-tertiary-300 hover:bg-tertiary-200 py-4"
-			>
-				<img class="w-6 h-6" src={googleIcon} alt="google-icon" />
-				<p class="text-surface-900 font-bold text-lg">
-					{type === 'login' ? 'Log in with Google' : 'Sign up with Google'}
-				</p></button
-			>
-		</a>
-
+		<OauthButton {type} provider={"apple"}/>
+		<OauthButton {type} provider={"google"}/>
 		<p class="text-surface-900">
 			{#if type === 'login'}
 				Don't have an account? <a href="/signup" class="text-primary-700 hover:text-primary-500"

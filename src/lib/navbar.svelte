@@ -1,27 +1,23 @@
 <script>
-
 	let logo = 'Logo';
-    let links = [
-        { name: 'Home', href: '/' },
-        { name: 'About', href: '/about' },
-        { name: 'Pricing', href: '/pricing' },
-    ];
+	let links = [
+		{ name: 'Home', href: '/' },
+		{ name: 'About', href: '/about' },
+		{ name: 'Pricing', href: '/pricing' }
+	];
 </script>
 
 <nav>
 	<div class="logo">
-		<!-- <img src="path/to/logo.png" alt="Logo" /> -->
 		<span>{logo}</span>
 	</div>
 	<div class="nav-links">
-        {#each links as link}
-            <button class="btn variant-filled-primary"><a href={link.href}>{link.name}</a></button>
-        {/each}
+		{#each links as link}
+			<a href={link.href}><button class="btn variant-filled-primary">{link.name}</button></a>
+		{/each}
 	</div>
 	<div class="login">
-		<button class="btn variant-filled-secondary">
-            <a href="/login">Login</a>
-        </button>
+		<a href="/login"> <button class="btn variant-filled-secondary">Login</button></a>
 	</div>
 </nav>
 
