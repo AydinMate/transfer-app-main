@@ -12,16 +12,16 @@
 	let passwordInputClass = "";
 	$: {
 		if (!passwordsMatch && (firstPassword.length > 0 || secondPassword.length > 0) && type === 'signup') {
-			passwordInputClass = "border-error-500 border-2";
+			passwordInputClass = "border-red-600 border-2 transition-all duration-100 ease-in-out";
 		} else if (passwordsMatch) {
-			passwordInputClass = "border-success-500 border-2";
+			passwordInputClass = "border-green-600 border-2 transition-all duration-100 ease-in-out";
 		} else {
 			passwordInputClass = "";
 		}
 	}
 </script>
 
-<div
+<form
 	class="flex flex-col bg-tertiary-50 rounded items-center px-10 w-[30rem] justify-start pt-[3.5rem] pb-[2rem] m-4"
 >
 	<div class="mb-4 flex w-full justify-between">
@@ -73,7 +73,7 @@
 			{/if}
 		</p>
 	</div>
-</div>
+</form>
 
 <style>
 	input {
