@@ -1,5 +1,5 @@
 <script lang="ts">
-	import googleIcon from '$lib/images/google-icon.png';
+	import googleIcon from '$lib/images/google-icon.svg';
     import appleIcon from '$lib/images/apple-icon.svg';
 	import { supabase } from './supabase-client';
 
