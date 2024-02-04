@@ -9,7 +9,7 @@ import Logo from './images/logo.svelte';
 
 <nav>
 	<a href="/" class="logo z-20">
-		<Logo styles="fill-current text-surface-50 hover:text-surface-200 hover:cursor-pointer" />
+		<Logo styles="fill-current text-surface-50 hover:text-surface-200 hover:cursor-pointer transition-colors duration-200" />
 	</a>
 	<div class="nav-links space-x-4 w-full absolute left-0 justify-center items-center flex z-10">
 		{#each links as link}
