@@ -1,5 +1,5 @@
 <script>
-	let logo = 'Logo';
+import Logo from './images/logo.svelte';
 	let links = [
 		{ name: 'Home', href: '/' },
 		{ name: 'About', href: '/about' },
@@ -8,15 +8,15 @@
 </script>
 
 <nav>
-	<div class="logo">
-		<span>{logo}</span>
-	</div>
-	<div class="nav-links">
+	<a href="/" class="logo z-20">
+		<Logo styles="fill-current text-primary-500 hover:text-primary-600 hover:cursor-pointer" />
+	</a>
+	<div class="nav-links space-x-4 w-full absolute left-0 justify-center items-center flex z-10">
 		{#each links as link}
-			<a href={link.href}><button class="btn variant-filled-primary">{link.name}</button></a>
+			<a href={link.href}><button class="btn variant-filled-primary nav-button ">{link.name}</button></a>
 		{/each}
 	</div>
-	<div class="login">
+	<div class="login z-20">
 		<a href="/login"> <button class="btn variant-filled-secondary">Login</button></a>
 	</div>
 </nav>
@@ -36,16 +36,14 @@
 	.logo {
 		display: flex;
 		align-items: center;
+		height: auto;
+		width: 4.5rem;
 	}
 
-	/* .logo img {
-    width: 40px;
-    height: 40px;
-    margin-right: 0.5rem;
-  } */
 
-	.nav-links button {
-		margin-right: 1rem;
-		text-decoration: none;
-	}
+
+	.nav-button {
+    text-decoration: none;
+}
+
 </style>
